@@ -45,8 +45,18 @@ features = {
     'Days_Indoors_le': days_indoors_le,
     'Work_Interest_le': work_interest_le
 }
-
 # Display the prediction
 if st.button("Predict"):
     prediction = predict(features)
-    st.write(f"The predicted outcome is: {prediction[0]}")
+    if prediction[0] == 0:
+        outcome = "No Stress"
+    elif prediction[0] == 1:
+        outcome = "Stress"
+    elif prediction[0] == 2:
+        outcome = "Maybe"
+    else:
+        outcome = "Unknown"  # In case the prediction is not 0, 1, or 2
+
+    st.write(f"The predicted outcome is: {outcome}")
+
+
